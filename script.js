@@ -429,12 +429,6 @@ function render(lang) {
     tab.setAttribute("aria-selected", String(active));
   });
 
-  try {
-    localStorage.setItem("cv-lang", lang);
-  } catch (e) {
-    /* ignore */
-  }
-
   const url = new URL(window.location.href);
   if (lang === "no") url.searchParams.delete("lang");
   else url.searchParams.set("lang", lang);
@@ -447,16 +441,5 @@ document.querySelectorAll(".tab").forEach((tab) => {
   tab.addEventListener("click", () => render(tab.dataset.lang));
 });
 
-let initial = "no";
 const urlLang = new URLSearchParams(window.location.search).get("lang");
-if (urlLang === "en" || urlLang === "no") {
-  initial = urlLang;
-} else {
-  try {
-    const saved = localStorage.getItem("cv-lang");
-    if (saved === "en" || saved === "no") initial = saved;
-  } catch (e) {
-    /* ignore */
-  }
-}
-render(initial);
+render(urlLang === "en" ? "en" : "no");
