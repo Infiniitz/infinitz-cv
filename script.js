@@ -412,7 +412,12 @@ function renderProjects(lang) {
   });
 }
 
-function render(lang) {
+function getLangFromUrl() {
+  const lang = new URLSearchParams(window.location.search).get("lang");
+  return lang === "en" ? "en" : "no";
+}
+
+function render(lang, { updateUrl = true } = {}) {
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const text = localize(getValue(CONTENT, el.getAttribute("data-i18n")), lang);
     if (typeof text === "string") el.textContent = text;
@@ -429,17 +434,32 @@ function render(lang) {
     tab.setAttribute("aria-selected", String(active));
   });
 
-  const url = new URL(window.location.href);
-  if (lang === "no") url.searchParams.delete("lang");
-  else url.searchParams.set("lang", lang);
-  history.replaceState(null, "", url);
+  if (updateUrl) {
+    const url = new URL(window.location.href);
+    if (lang === "no") url.searchParams.delete("lang");
+    else url.searchParams.set("lang", lang);
+    history.replaceState(null, "", url);
+  }
+}
+
+function applyLangFromUrl() {
+  render(getLangFromUrl(), { updateUrl: false });
 }
 
 renderContact();
+
+try {
+  localStorage.removeItem("cv-lang");
+} catch (e) {
+  /* ignore */
+}
 
 document.querySelectorAll(".tab").forEach((tab) => {
   tab.addEventListener("click", () => render(tab.dataset.lang));
 });
 
-const urlLang = new URLSearchParams(window.location.search).get("lang");
-render(urlLang === "en" ? "en" : "no");
+applyLangFromUrl();
+
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) applyLangFromUrl();
+});
