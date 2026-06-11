@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harald Ødegaard — CV</title>
+  <meta name="description" content="CV for Harald Ødegaard — Backend-utvikler, daglig leder og teknolog." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <img class="hero__avatar" src="public/Harald_1.png" alt="Portrett av Harald Ødegaard" />
+      <div class="hero__intro">
+        <h1 class="hero__name">Harald Ødegaard</h1>
+        <p class="hero__title" data-i18n="role">Backend-utvikler · Daglig leder · Teknolog</p>
+
+        <div class="contact" data-contact></div>
+
+        <div class="hero__actions">
+          <nav class="tabs" role="tablist" aria-label="Språk / Language">
+            <button class="tab tab--active" role="tab" data-lang="no" aria-selected="true">Norsk</button>
+            <button class="tab" role="tab" data-lang="en" aria-selected="false">English</button>
+          </nav>
+          <button class="btn-print" type="button" data-i18n="actions.print" onclick="window.print()">
+            Last ned PDF
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- PROFILE -->
+      <section class="card">
+        <h2 class="card__title" data-i18n="profile.title">Profil</h2>
+        <p class="card__text" data-i18n="profile.body"></p>
+      </section>
+
+      <!-- EDUCATION -->
+      <section class="card">
+        <h2 class="card__title" data-i18n="education.title">Utdanning</h2>
+        <div class="entry">
+          <div class="entry__head">
+            <h3 class="entry__role" data-i18n="education.0.role"></h3>
+            <span class="entry__date" data-i18n="education.0.date"></span>
+          </div>
+          <p class="entry__org" data-i18n="education.0.org"></p>
+          <p class="entry__desc" data-i18n="education.0.desc"></p>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="card">
+        <h2 class="card__title" data-i18n="experience.title">Utvalgt erfaring</h2>
+        <div class="entry">
+          <div class="entry__head">
+            <h3 class="entry__role" data-i18n="experience.0.role"></h3>
+            <span class="entry__date" data-i18n="experience.0.date"></span>
+          </div>
+          <p class="entry__org" data-i18n="experience.0.org"></p>
+          <p class="entry__desc" data-i18n="experience.0.desc"></p>
+        </div>
+        <div class="entry">
+          <div class="entry__head">
+            <h3 class="entry__role" data-i18n="experience.1.role"></h3>
+            <span class="entry__date" data-i18n="experience.1.date"></span>
+          </div>
+          <p class="entry__org" data-i18n="experience.1.org"></p>
+          <p class="entry__desc" data-i18n="experience.1.desc"></p>
+        </div>
+        <div class="entry">
+          <div class="entry__head">
+            <h3 class="entry__role" data-i18n="experience.2.role"></h3>
+            <span class="entry__date" data-i18n="experience.2.date"></span>
+          </div>
+          <p class="entry__org" data-i18n="experience.2.org"></p>
+          <p class="entry__desc" data-i18n="experience.2.desc"></p>
+        </div>
+        <h3 class="card__subtitle" data-i18n="otherExperience.title">Annen erfaring</h3>
+        <p class="card__text" data-i18n="otherExperience.body"></p>
+      </section>
+
+      <!-- SKILLS -->
+      <section class="card">
+        <h2 class="card__title" data-skills-title>Ferdigheter</h2>
+        <div class="tier-legend" data-skills-legend></div>
+        <div data-skills></div>
+        <p class="card__note" data-skills-note></p>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="card">
+        <h2 class="card__title" data-projects-title>Prosjekter</h2>
+        <div class="projects" data-projects></div>
+      </section>
+
+      <!-- REFERENCES -->
+      <section class="card">
+        <h2 class="card__title" data-i18n="references.title">Referanser</h2>
+        <p class="card__text" data-i18n="references.body"></p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span data-i18n="footer.updated"></span>
+      <a href="https://github.com/Infiniitz" target="_blank" rel="noopener">GitHub</a>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
